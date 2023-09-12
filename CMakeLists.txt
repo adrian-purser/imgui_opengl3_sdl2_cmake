@@ -30,9 +30,8 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(SDL2)
-include_directories(${SDL2_SOURCE_DIR}/include})
 
-message(STATUS "SDL2 Libraries: ${SDL_LIBRARIES}")
+message(STATUS "SDL2 Include Dir: ${SDL2_INCLUDE_DIRS}")
 message(STATUS "SDL2 Source Dir: ${SDL2_SOURCE_DIR}")
 message(STATUS "SDL2 Binary Dir: ${SDL2_BINARY_DIR}")
 
@@ -76,7 +75,7 @@ set(SOURCES
 add_library(imgui_opengl3_sdl2 STATIC ${SOURCES})
 target_compile_features(imgui_opengl3_sdl2 PUBLIC cxx_std_20)
 target_include_directories(imgui_opengl3_sdl2 PUBLIC ${imgui_SOURCE_DIR} ${SDL2_INCLUDE_DIRS})
-target_link_libraries(imgui_opengl3_sdl2 PUBLIC ${SDL_LIBRARIES} SDL2-static)
+target_link_libraries(imgui_opengl3_sdl2 PUBLIC SDL2::SDL2-static)
 
 
 
