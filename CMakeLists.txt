@@ -20,7 +20,7 @@ find_package(OpenGL REQUIRED)
 
 message(STATUS "Adding SDL2...")
 
-set(SDL2_DISABLE_SDL2MAIN ON)
+set(SDL2_DISABLE_SDL2MAIN ON CACHE INTERNAL "Disable SDL2Main")
 
 FetchContent_Declare(
     SDL2
