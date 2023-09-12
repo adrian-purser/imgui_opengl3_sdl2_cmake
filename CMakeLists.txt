@@ -24,7 +24,7 @@ FetchContent_Declare(
     SDL2
     GIT_REPOSITORY  https://github.com/libsdl-org/SDL
 #    GIT_TAG         release-2.0.20
-    GIT_TAG         main
+    GIT_TAG         SDL2
     GIT_SHALLOW     TRUE
 #    GIT_PROGRESS    TRUE
 )
@@ -74,8 +74,8 @@ set(SOURCES
 
 add_library(imgui_opengl3_sdl2 STATIC ${SOURCES})
 target_compile_features(imgui_opengl3_sdl2 PUBLIC cxx_std_20)
-target_include_directories(imgui_opengl3_sdl2 PUBLIC ${imgui_SOURCE_DIR} ${SDL2_INCLUDE_DIRS})
-target_link_libraries(imgui_opengl3_sdl2 PUBLIC SDL2::SDL2)
+target_include_directories(imgui_opengl3_sdl2 PUBLIC ${imgui_SOURCE_DIR})
+target_link_libraries(imgui_opengl3_sdl2 PUBLIC SDL2::SDL2-static)
 
 
 
