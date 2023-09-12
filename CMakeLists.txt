@@ -5,6 +5,7 @@ cmake_policy(SET CMP0072 NEW)
 cmake_policy(SET CMP0135 NEW)
 
 include(FetchContent)
+set(FETCHCONTENT_QUIET FALSE)
 
 set(OpenGL_GL_PREFERENCE GLVND)
 set(CMAKE_CXX_STANDARD 20)
@@ -12,16 +13,29 @@ set(CMAKE_CXX_STANDARD_REQUIRED)
 
 #find_package(glfw3 REQUIRED)
 find_package(OpenGL REQUIRED)
-find_package(SDL2 REQUIRED)
 
+#==============================================================================
+#	SDL2
+#==============================================================================
 
+message(STATUS "Adding SDL2...")
+
+FetchContent_Declare(
+    SDL2
+    GIT_REPOSITORY  https://github.com/libsdl-org/SDL
+#    GIT_TAG         release-2.0.20
+    GIT_PROGRESS    TRUE
+)
+
+FetchContent_MakeAvailable(SDL2)
+
+message(STATUS "SDL2 Libraries: ${SDL_LIBRARIES}")
 
 #==============================================================================
 #	IMGUI
 #==============================================================================
 
-
-message(STATUS "Adding ImGui")
+message(STATUS "Adding ImGui...")
 FetchContent_Declare(
 	imgui
 	GIT_REPOSITORY	https://github.com/ocornut/imgui.git
@@ -55,7 +69,7 @@ set(SOURCES
 add_library(imgui_opengl3_sdl2 STATIC ${SOURCES})
 target_compile_features(imgui_opengl3_sdl2 PUBLIC cxx_std_20)
 target_include_directories(imgui_opengl3_sdl2 PUBLIC ${imgui_SOURCE_DIR} ${SDL2_INCLUDE_DIRS})
-target_link_libraries(imgui_opengl3_sdl2 PUBLIC SDL2::SDL2)
+target_link_libraries(imgui_opengl3_sdl2 PUBLIC ${SDL_LIBRARIES} SDL2-static)
 
 
 
