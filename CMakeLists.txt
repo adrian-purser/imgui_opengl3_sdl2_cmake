@@ -20,6 +20,8 @@ find_package(OpenGL REQUIRED)
 
 message(STATUS "Adding SDL2...")
 
+set(SDL2_DISABLE_SDL2MAIN ON)
+
 FetchContent_Declare(
     SDL2
     GIT_REPOSITORY  https://github.com/libsdl-org/SDL
