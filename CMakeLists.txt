@@ -75,7 +75,7 @@ set(SOURCES
 add_library(imgui_opengl3_sdl2 STATIC ${SOURCES})
 target_compile_features(imgui_opengl3_sdl2 PUBLIC cxx_std_20)
 target_include_directories(imgui_opengl3_sdl2 PUBLIC ${imgui_SOURCE_DIR} ${SDL2_INCLUDE_DIRS})
-target_link_libraries(imgui_opengl3_sdl2 PUBLIC SDL2::SDL2-static)
+target_link_libraries(imgui_opengl3_sdl2 PUBLIC SDL2::SDL2)
 
 
 
