@@ -26,13 +26,15 @@ FetchContent_Declare(
 #    GIT_TAG         release-2.0.20
     GIT_TAG         main
     GIT_SHALLOW     TRUE
-    GIT_PROGRESS    TRUE
+#    GIT_PROGRESS    TRUE
 )
 
 FetchContent_MakeAvailable(SDL2)
 include_directories(${SDL2_SOURCE_DIR}/include})
 
 message(STATUS "SDL2 Libraries: ${SDL_LIBRARIES}")
+message(STATUS "SDL2 Source Dir: ${SDL2_SOURCE_DIR}")
+message(STATUS "SDL2 Binary Dir: ${SDL2_BINARY_DIR}")
 
 #==============================================================================
 #	IMGUI
@@ -44,7 +46,7 @@ FetchContent_Declare(
     GIT_REPOSITORY  https://github.com/ocornut/imgui.git
     GIT_TAG         origin/master
     GIT_SHALLOW     TRUE
-    GIT_PROGRESS    TRUE
+#    GIT_PROGRESS    TRUE
 )
 
 FetchContent_MakeAvailable(imgui)
