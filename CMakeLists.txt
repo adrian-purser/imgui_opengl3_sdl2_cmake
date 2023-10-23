@@ -20,12 +20,13 @@ find_package(OpenGL REQUIRED)
 
 message(STATUS "Adding SDL2...")
 
-set(SDL2_DISABLE_SDL2MAIN ON CACHE INTERNAL "Disable SDL2Main")
+set( SDL2_DISABLE_SDL2MAIN ON CACHE INTERNAL "Disable SDL2Main")
+set( SDL_STATIC ON CACHE BOOL "" FORCE )
+set( SDL_SHARED OFF CACHE BOOL "" FORCE )
 
 FetchContent_Declare(
     SDL2
     GIT_REPOSITORY  https://github.com/libsdl-org/SDL
-#    GIT_TAG         release-2.0.20
     GIT_TAG         SDL2
     GIT_SHALLOW     TRUE
 #    GIT_PROGRESS    TRUE
